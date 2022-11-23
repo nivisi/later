@@ -1,0 +1,19 @@
+import 'package:isar/isar.dart';
+
+part 'record_model.g.dart';
+
+@collection
+class RecordModel {
+  Id id = Isar.autoIncrement; // you can also use id = null to auto increment
+
+  @Index(type: IndexType.value)
+  String title = '';
+
+  @enumerated
+  RecordStatus status = RecordStatus.later;
+}
+
+enum RecordStatus {
+  done,
+  later,
+}
