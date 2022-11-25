@@ -3,4 +3,5 @@
 
 ---
 
-> **Note** Repo / architecture details could be found in the [wiki](https://github.com/nivisi/later/wiki).
+- [Repo / architecture details](https://github.com/nivisi/later/wiki);
+- [Project's kanban](https://github.com/users/nivisi/projects/1/views/1)
