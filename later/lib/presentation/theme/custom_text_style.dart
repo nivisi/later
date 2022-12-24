@@ -27,4 +27,52 @@ class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
   final TextStyle? customSubtitle2;
   final TextStyle? customText1;
   final TextStyle? customText2;
+
+  TextStyle? get title1 => customTitle1;
+  TextStyle? get title2 => customTitle2;
+  TextStyle? get subtitle1 => customSubtitle1;
+  TextStyle? get subtitle2 => customSubtitle2;
+  TextStyle? get text1 => customText1;
+  TextStyle? get text2 => customText2;
+
+  @override
+  ThemeExtension<CustomTextStyle> lerp(
+      ThemeExtension<CustomTextStyle>? other, double t) {
+    if (other is! CustomTextStyle) {
+      return this;
+    }
+
+    return CustomTextStyle(
+      customTitle1: TextStyle.lerp(
+        customTitle1,
+        other.customTitle1,
+        t,
+      ),
+      customTitle2: TextStyle.lerp(
+        customTitle2,
+        other.customTitle2,
+        t,
+      ),
+      customSubtitle1: TextStyle.lerp(
+        customSubtitle1,
+        other.customSubtitle1,
+        t,
+      ),
+      customSubtitle2: TextStyle.lerp(
+        customSubtitle2,
+        other.customSubtitle1,
+        t,
+      ),
+      customText1: TextStyle.lerp(
+        customText1,
+        other.customText1,
+        t,
+      ),
+      customText2: TextStyle.lerp(
+        customText2,
+        other.customText2,
+        t,
+      ),
+    );
+  }
 }
