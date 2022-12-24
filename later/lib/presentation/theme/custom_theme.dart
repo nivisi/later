@@ -37,5 +37,58 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
     if (other is! CustomTheme) {
       return this;
     }
+
+    return CustomTheme(
+      backgroundColor: Color.lerp(
+        backgroundColor,
+        other.backgroundColor,
+        t,
+      ),
+      backgroundSecondaryColor: Color.lerp(
+        backgroundSecondaryColor,
+        other.backgroundSecondaryColor,
+        t,
+      ),
+      foregroundColor: Color.lerp(
+        foregroundColor,
+        other.foregroundColor,
+        t,
+      ),
+      foregroundDisabledColor: Color.lerp(
+        foregroundDisabledColor,
+        other.foregroundDisabledColor,
+        t,
+      ),
+      foregroundSecondaryColor: Color.lerp(
+        foregroundSecondaryColor,
+        other.foregroundSecondaryColor,
+        t,
+      ),
+      foregroundSeocndaryDisabledColor: Color.lerp(
+        foregroundSeocndaryDisabledColor,
+        other.foregroundSeocndaryDisabledColor,
+        t,
+      ),
+      primaryColor: Color.lerp(
+        primaryColor,
+        other.primaryColor,
+        t,
+      ),
+      secondaryPrimaryColor: Color.lerp(
+        secondaryPrimaryColor,
+        other.secondaryPrimaryColor,
+        t,
+      ),
+      primaryDisabledColor: Color.lerp(
+        primaryDisabledColor,
+        other.primaryDisabledColor,
+        t,
+      ),
+      secondaryPrimaryDisabledColor: Color.lerp(
+        secondaryPrimaryDisabledColor,
+        other.secondaryPrimaryDisabledColor,
+        t,
+      ),
+    );
   }
 }
