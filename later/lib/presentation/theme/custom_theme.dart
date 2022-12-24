@@ -26,9 +26,37 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   final Color? secondaryPrimaryDisabledColor;
 
   @override
-  ThemeExtension<CustomTheme> copyWith() {
-    // TODO: implement copyWith
-    throw UnimplementedError();
+  CustomTheme copyWith({
+    Color? backgroundColor,
+    Color? backgroundSecondaryColor,
+    Color? foregroundColor,
+    Color? foregroundDisabledColor,
+    Color? foregroundSecondaryColor,
+    Color? foregroundSeocndaryDisabledColor,
+    Color? primaryColor,
+    Color? secondaryPrimaryColor,
+    Color? primaryDisabledColor,
+    Color? secondaryPrimaryDisabledColor,
+    TextStyle? title1,
+  }) {
+    return CustomTheme(
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      backgroundSecondaryColor:
+          backgroundSecondaryColor ?? this.backgroundSecondaryColor,
+      foregroundColor: foregroundColor ?? this.foregroundColor,
+      foregroundDisabledColor:
+          foregroundDisabledColor ?? this.foregroundDisabledColor,
+      foregroundSecondaryColor:
+          foregroundSecondaryColor ?? this.foregroundSecondaryColor,
+      foregroundSeocndaryDisabledColor: foregroundSeocndaryDisabledColor ??
+          this.foregroundSeocndaryDisabledColor,
+      primaryColor: primaryColor ?? this.primaryColor,
+      secondaryPrimaryColor:
+          secondaryPrimaryColor ?? this.secondaryPrimaryColor,
+      primaryDisabledColor: primaryDisabledColor ?? this.primaryDisabledColor,
+      secondaryPrimaryDisabledColor:
+          secondaryPrimaryDisabledColor ?? this.secondaryPrimaryDisabledColor,
+    );
   }
 
   @override
