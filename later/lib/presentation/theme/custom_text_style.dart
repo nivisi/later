@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
-  CustomTextStyle({
+  const CustomTextStyle({
     TextStyle? customTitle1,
     TextStyle? customTitle2,
     TextStyle? customSubtitle1,
@@ -34,6 +34,31 @@ class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
   TextStyle? get subtitle2 => customSubtitle2;
   TextStyle? get text1 => customText1;
   TextStyle? get text2 => customText2;
+
+  @override
+  CustomTextStyle copyWith({
+    TextStyle? customTitle1,
+    TextStyle? customTitle2,
+    TextStyle? customSubtitle1,
+    TextStyle? customSubtitle2,
+    TextStyle? customText1,
+    TextStyle? customText2,
+    TextStyle? title1,
+    TextStyle? title2,
+    TextStyle? subtitle1,
+    TextStyle? subtitle2,
+    TextStyle? text1,
+    TextStyle? text2,
+  }) {
+    return CustomTextStyle(
+      customTitle1: customTitle1 ?? title1 ?? this.customTitle1,
+      customTitle2: customTitle2 ?? title2 ?? this.customTitle2,
+      customSubtitle1: customSubtitle1 ?? subtitle1 ?? this.customSubtitle1,
+      customSubtitle2: customSubtitle2 ?? subtitle2 ?? this.customSubtitle2,
+      customText1: customText1 ?? text1 ?? this.customText1,
+      customText2: customText2 ?? text2 ?? this.customText2,
+    );
+  }
 
   @override
   ThemeExtension<CustomTextStyle> lerp(
