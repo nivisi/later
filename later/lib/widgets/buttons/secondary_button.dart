@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton({
     super.key,
-    required this.onTap,
+    this.onTap,
     required this.title,
   });
 
