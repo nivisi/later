@@ -9,7 +9,8 @@ class RecordModel {
     this.description,
     required this.url,
     required this.lastEditedAt,
-  }) : createdAt = DateTime.now();
+    required this.createdAt,
+  });
 
   String url;
   String? description;
