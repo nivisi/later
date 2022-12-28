@@ -60,7 +60,9 @@ class LaterPalette extends ThemeExtension<LaterPalette> {
 
   @override
   ThemeExtension<LaterPalette> lerp(
-      ThemeExtension<LaterPalette>? other, double t) {
+    ThemeExtension<LaterPalette>? other,
+    double t,
+  ) {
     if (other is! LaterPalette) {
       return this;
     }

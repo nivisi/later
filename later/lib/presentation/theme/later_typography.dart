@@ -28,17 +28,19 @@ class LaterTypography extends ThemeExtension<LaterTypography> {
   }) {
     return LaterTypography(
       title1: title1 ?? this.title1,
-      title2: title2 ?? title2 ?? this.title2,
-      subtitle1: subtitle1 ?? subtitle1 ?? this.subtitle1,
-      subtitle2: subtitle2 ?? subtitle2 ?? this.subtitle2,
-      text1: text1 ?? text1 ?? this.text1,
-      text2: text2 ?? text2 ?? this.text2,
+      title2: title2 ?? this.title2,
+      subtitle1: subtitle1 ?? this.subtitle1,
+      subtitle2: subtitle2 ?? this.subtitle2,
+      text1: text1 ?? this.text1,
+      text2: text2 ?? this.text2,
     );
   }
 
   @override
   ThemeExtension<LaterTypography> lerp(
-      ThemeExtension<LaterTypography>? other, double t) {
+    ThemeExtension<LaterTypography>? other,
+    double t,
+  ) {
     if (other is! LaterTypography) {
       return this;
     }
