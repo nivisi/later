@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
-  const CustomTextStyle({
+class LateTypography extends ThemeExtension<LateTypography> {
+  const LateTypography({
     TextStyle? customTitle1,
     TextStyle? customTitle2,
     TextStyle? customSubtitle1,
@@ -36,7 +36,7 @@ class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
   TextStyle? get text2 => customText2;
 
   @override
-  CustomTextStyle copyWith({
+  LateTypography copyWith({
     TextStyle? customTitle1,
     TextStyle? customTitle2,
     TextStyle? customSubtitle1,
@@ -50,7 +50,7 @@ class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
     TextStyle? text1,
     TextStyle? text2,
   }) {
-    return CustomTextStyle(
+    return LateTypography(
       customTitle1: customTitle1 ?? title1 ?? this.customTitle1,
       customTitle2: customTitle2 ?? title2 ?? this.customTitle2,
       customSubtitle1: customSubtitle1 ?? subtitle1 ?? this.customSubtitle1,
@@ -61,13 +61,13 @@ class CustomTextStyle extends ThemeExtension<CustomTextStyle> {
   }
 
   @override
-  ThemeExtension<CustomTextStyle> lerp(
-      ThemeExtension<CustomTextStyle>? other, double t) {
-    if (other is! CustomTextStyle) {
+  ThemeExtension<LateTypography> lerp(
+      ThemeExtension<LateTypography>? other, double t) {
+    if (other is! LateTypography) {
       return this;
     }
 
-    return CustomTextStyle(
+    return LateTypography(
       customTitle1: TextStyle.lerp(
         customTitle1,
         other.customTitle1,

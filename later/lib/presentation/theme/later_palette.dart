@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomColors extends ThemeExtension<CustomColors> {
-  const CustomColors({
+class LaterPalette extends ThemeExtension<LaterPalette> {
+  const LaterPalette({
     this.backgroundColor,
     this.backgroundSecondaryColor,
     this.foregroundColor,
@@ -26,7 +26,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color? secondaryPrimaryDisabledColor;
 
   @override
-  CustomColors copyWith({
+  LaterPalette copyWith({
     Color? backgroundColor,
     Color? backgroundSecondaryColor,
     Color? foregroundColor,
@@ -37,9 +37,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? secondaryPrimaryColor,
     Color? primaryDisabledColor,
     Color? secondaryPrimaryDisabledColor,
-    TextStyle? title1,
   }) {
-    return CustomColors(
+    return LaterPalette(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       backgroundSecondaryColor:
           backgroundSecondaryColor ?? this.backgroundSecondaryColor,
@@ -60,13 +59,13 @@ class CustomColors extends ThemeExtension<CustomColors> {
   }
 
   @override
-  ThemeExtension<CustomColors> lerp(
-      ThemeExtension<CustomColors>? other, double t) {
-    if (other is! CustomColors) {
+  ThemeExtension<LaterPalette> lerp(
+      ThemeExtension<LaterPalette>? other, double t) {
+    if (other is! LaterPalette) {
       return this;
     }
 
-    return CustomColors(
+    return LaterPalette(
       backgroundColor: Color.lerp(
         backgroundColor,
         other.backgroundColor,
