@@ -11,10 +11,10 @@ class RecordModel {
     required this.lastEditedAt,
   }) : createdAt = DateTime.now();
 
-  final String url;
-  final String? description;
-  final DateTime createdAt;
-  final DateTime lastEditedAt;
+  String url;
+  String? description;
+  DateTime createdAt;
+  DateTime lastEditedAt;
   Id id = Isar.autoIncrement; // you can also use id = null to auto increment
 
   @Index(type: IndexType.value)
