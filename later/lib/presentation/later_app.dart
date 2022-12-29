@@ -16,7 +16,7 @@ class LaterApp extends StatelessWidget {
       routerDelegate: _router.delegate(),
       routeInformationParser: _router.defaultRouteParser(),
       theme: ThemeData().copyWith(
-        extensions: <ThemeExtension<dynamic>>[
+        extensions: [
           const LaterTypography(
             text1: TextStyle(fontSize: 14),
             text2: TextStyle(fontSize: 12),
