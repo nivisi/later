@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:later/presentation/theme/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -13,10 +14,10 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LaterPalette laterPalette =
-        Theme.of(context).extension<LaterPalette>()!;
-    final LaterTypography laterTypography =
-        Theme.of(context).extension<LaterTypography>()!;
+    final laterPalette = context.palette;
+
+    final laterTypography = context.typography;
+
     return TextButton(
       style: TextButton.styleFrom(
         foregroundColor: laterPalette.primaryColor,
