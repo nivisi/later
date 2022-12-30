@@ -5,16 +5,9 @@ import 'package:later/database/models/record_model.dart';
 import './records_data_source.dart';
 
 class RecordsLocalDataSource extends RecordsDataSource {
-  late final Isar _isar;
+  final Isar _isar;
 
-  // We must preinitialize it first
-  @FactoryMethod(preResolve: true)
-  static Future<RecordsLocalDataSource> init() async {
-    final repo = RecordsLocalDataSource()
-      .._isar = await Isar.open([RecordDbModelSchema]);
-
-    return repo;
-  }
+  const RecordsLocalDataSource(this._isar);
 
   @override
   Future<RecordDbModel> create({

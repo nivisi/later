@@ -1,6 +1,8 @@
 import 'package:later/database/models/record_model.dart';
 
 abstract class RecordsDataSource {
+  const RecordsDataSource();
+
   Stream<List<RecordDbModel>> watchAll();
   Future<RecordDbModel> create(
       {required String url, String? title, String? description});
