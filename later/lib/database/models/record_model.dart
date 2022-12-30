@@ -3,8 +3,8 @@ import 'package:isar/isar.dart';
 part 'record_model.g.dart';
 
 @collection
-class RecordModel {
-  RecordModel({
+class RecordDbModel {
+  RecordDbModel({
     this.title,
     this.description,
     required this.url,
