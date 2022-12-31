@@ -4,6 +4,7 @@ import 'package:later/database/models/record_model.dart';
 
 import './records_data_source.dart';
 
+@LazySingleton(as: RecordsDataSource)
 class RecordsLocalDataSource extends RecordsDataSource {
   final Isar _isar;
 
@@ -11,21 +12,22 @@ class RecordsLocalDataSource extends RecordsDataSource {
 
   @override
   Future<RecordDbModel> create({
-    required String url,
-    String? title,
+    required String? url,
+    required String title,
     String? description,
+    DateTime? lastEditedAt,
   }) async {
-    if (url.isEmpty) {
-      throw const FormatException('Page adress cannot be empty');
+    if (title.isEmpty) {
+      throw const FormatException('Title cannot be empty');
     }
 
     final record = RecordDbModel(
       url: url,
       createdAt: DateTime.now(),
-      lastEditedAt: DateTime.now(),
-    )
-      ..title = title
-      ..description = description;
+      lastEditedAt: lastEditedAt,
+      title: title,
+      description: description,
+    );
 
     await _isar.writeTxn(
       () => _isar.recordDbModels.put(record), // insert & updat
