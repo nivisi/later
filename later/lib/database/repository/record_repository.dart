@@ -28,19 +28,30 @@ class RecordRepositoryImpl implements RecordsRepository {
           lastEditedAt: lastEditedAt,
         );
       }
-    } catch (_) {
+    } catch (error) {
       throw Exception();
     }
   }
 
   @override
   Future<RecordModel?> getById(int id) async {
-    // final newModel = await recordsDataSurce.getById(id);
+    try {
+      final dbModel = await recordsDataSurce.getById(id);
+      if (dbModel != null) {
+        final model = RecordModel(
+          createdAt: dbModel!.createdAt,
+          title: dbModel.title,
+          url: dbModel.url,
+          description: dbModel.description,
+          lastEditedAt: dbModel.lastEditedAt,
+          id: dbModel.id,
+        );
+        return model;
+      }
+    } catch (error) {
+      throw Exception();
+    }
   }
-
-  Future<RecordDbModel> _getById(
-    Future<RecordDbModel> Function() getRecord,
-  ) async {}
 
   @override
   Stream<List<RecordModel>> watchAll() {
