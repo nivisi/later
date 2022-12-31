@@ -11,7 +11,7 @@ class RecordsLocalDataSource extends RecordsDataSource {
   const RecordsLocalDataSource(this._isar);
 
   @override
-  Future<RecordDbModel> create({
+  Future<void> create({
     required String? url,
     required String title,
     String? description,
@@ -32,8 +32,6 @@ class RecordsLocalDataSource extends RecordsDataSource {
     await _isar.writeTxn(
       () => _isar.recordDbModels.put(record), // insert & updat
     );
-
-    return record;
   }
 
   @override
