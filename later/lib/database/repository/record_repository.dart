@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:later/database/datasources/records_data_source.dart';
-import 'package:later/database/models/record_model.dart';
 import 'package:later/domain/models/record_model.dart';
 import 'package:later/domain/repository/record_repository.dart';
 
@@ -55,7 +54,18 @@ class RecordRepositoryImpl implements RecordsRepository {
 
   @override
   Stream<List<RecordModel>> watchAll() {
-    // TODO: implement watchAll
-    throw UnimplementedError();
+    return recordsDataSurce.watchAll().asyncMap(
+          (list) => list.map(
+            (dbModel) {
+              return RecordModel(
+                  createdAt: dbModel.createdAt,
+                  lastEditedAt: dbModel.lastEditedAt,
+                  title: dbModel.title,
+                  url: dbModel.url,
+                  description: dbModel.description,
+                  id: dbModel.id);
+            },
+          ).toList(),
+        );
   }
 }
