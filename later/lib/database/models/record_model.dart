@@ -19,7 +19,7 @@ class RecordDbModel {
   Id id = Isar.autoIncrement; // you can also use id = null to auto increment
 
   @Index(type: IndexType.value)
-  String? title;
+  String title;
 
   @enumerated
   RecordStatus status = RecordStatus.later;

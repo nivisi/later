@@ -10,8 +10,8 @@ class RecordModel {
 
   final int id;
   final String title;
-  final String description;
-  final String url;
+  final String? description;
+  final String? url;
   final DateTime createdAt;
-  final DateTime lastEditedAt;
+  final DateTime? lastEditedAt;
 }
