@@ -12,14 +12,13 @@ class RecordDbModel {
     required this.createdAt,
   });
 
-  String? url;
+  Id id = Isar.autoIncrement; // you can also use id = null to auto increment
+  @Index(type: IndexType.value)
+  String title;
+  String url;
   String? description;
   DateTime createdAt;
   DateTime? lastEditedAt;
-  Id id = Isar.autoIncrement; // you can also use id = null to auto increment
-
-  @Index(type: IndexType.value)
-  String title;
 
   @enumerated
   RecordStatus status = RecordStatus.later;
