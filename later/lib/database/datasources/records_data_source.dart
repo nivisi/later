@@ -4,7 +4,7 @@ abstract class RecordsDataSource {
   const RecordsDataSource();
 
   Stream<List<RecordDbModel>> watchAll();
-  Future<void> create({
+  Future<RecordDbModel> create({
     required String url,
     required String title,
     String? description,
