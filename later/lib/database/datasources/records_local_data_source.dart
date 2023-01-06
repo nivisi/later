@@ -37,8 +37,8 @@ class RecordsLocalDataSource extends RecordsDataSource {
   }
 
   @override
-  Future<RecordDbModel?> getById(int id) async {
-    return await _isar.writeTxn(() => _isar.recordDbModels.get(id));
+  Future<RecordDbModel?> getById(int id) {
+    return _isar.txn(() => _isar.recordDbModels.get(id));
   }
 
   @override
