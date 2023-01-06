@@ -1,69 +1,58 @@
 import 'package:injectable/injectable.dart';
 import 'package:later/database/datasources/records_data_source.dart';
+import 'package:later/database/models/record_model.dart';
 import 'package:later/domain/models/record_model.dart';
+import 'package:later/domain/remap/record_remapper.dart';
 import 'package:later/domain/repository/record_repository.dart';
 
 @lazySingleton
 class RecordRepositoryImpl implements RecordsRepository {
-  RecordRepositoryImpl({
-    required this.recordsDataSurce,
-  });
+  RecordRepositoryImpl(
+    this._recordsDataSource,
+    this._recordRemapper,
+  );
 
-  final RecordsDataSource recordsDataSurce;
+  final RecordsDataSource _recordsDataSource;
+  final RecordRemapper _recordRemapper;
 
   @override
-  Future<void> create({
-    required String? url,
+  Future<RecordModel> create({
+    required String url,
     required String title,
     String? description,
-    DateTime? lastEditedAt,
   }) async {
-    try {
-      if (title.isNotEmpty) {
-        await recordsDataSurce.create(
-          url: url,
-          title: title,
-          description: description,
-          lastEditedAt: lastEditedAt,
-        );
-      }
-    } catch (error) {
-      throw Exception();
+    if (title.isEmpty) {
+      throw const FormatException('Title cannot be empty');
     }
+
+    RecordDbModel dbModel = await _recordsDataSource.create(
+      url: url,
+      title: title,
+      description: description,
+    );
+
+    final model = _recordRemapper.dataToDomain(dbModel);
+
+    return model;
   }
 
   @override
   Future<RecordModel?> getById(int id) async {
-    try {
-      final dbModel = await recordsDataSurce.getById(id);
-      if (dbModel != null) {
-        final model = RecordModel(
-          createdAt: dbModel!.createdAt,
-          title: dbModel.title,
-          url: dbModel.url,
-          description: dbModel.description,
-          lastEditedAt: dbModel.lastEditedAt,
-          id: dbModel.id,
-        );
-        return model;
-      }
-    } catch (error) {
-      throw Exception();
+    final dbModel = await _recordsDataSource.getById(id);
+
+    if (dbModel != null) {
+      final model = _recordRemapper.dataToDomain(dbModel);
+
+      return model;
     }
   }
 
   @override
   Stream<List<RecordModel>> watchAll() {
-    return recordsDataSurce.watchAll().asyncMap(
+    return _recordsDataSource.watchAll().asyncMap(
           (list) => list.map(
             (dbModel) {
-              return RecordModel(
-                  createdAt: dbModel.createdAt,
-                  lastEditedAt: dbModel.lastEditedAt,
-                  title: dbModel.title,
-                  url: dbModel.url,
-                  description: dbModel.description,
-                  id: dbModel.id);
+              return _recordRemapper.dataToDomain(dbModel);
             },
           ).toList(),
         );
