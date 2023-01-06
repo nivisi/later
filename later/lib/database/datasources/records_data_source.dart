@@ -4,10 +4,10 @@ abstract class RecordsDataSource {
   const RecordsDataSource();
 
   Stream<List<RecordDbModel>> watchAll();
-  Future<void> create(
-      {required String? url,
-      required String title,
-      String? description,
-      DateTime? lastEditedAt});
+  Future<void> create({
+    required String url,
+    required String title,
+    String? description,
+  });
   Future<RecordDbModel?> getById(int id);
 }
