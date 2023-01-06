@@ -36,7 +36,7 @@ class _HomeAllRecordsListState extends State<HomeAllRecordsList> {
           itemBuilder: (context, index) {
             final record = data[index];
 
-            return Text('');
+            return Text(record.title);
           },
         );
       },

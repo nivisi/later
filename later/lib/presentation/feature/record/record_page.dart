@@ -26,7 +26,7 @@ class _RecordPageState extends State<RecordPage> {
           const Text('This is a record page'),
           TextButton(
             onPressed: () {
-              // repo.create(title: 'New');
+              repo.create(title: 'New');
             },
             child: const Text('Create new record'),
           ),
