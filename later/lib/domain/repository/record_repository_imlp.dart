@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:later/database/datasources/records_data_source.dart';
-import 'package:later/database/models/record_model.dart';
 import 'package:later/domain/models/record_model.dart';
 import 'package:later/domain/remap/record_remapper.dart';
 import 'package:later/domain/repository/record_repository.dart';
@@ -25,7 +24,7 @@ class RecordRepositoryImpl implements RecordsRepository {
       throw const FormatException('Title cannot be empty');
     }
 
-    RecordDbModel dbModel = await _recordsDataSource.create(
+    final dbModel = await _recordsDataSource.create(
       url: url,
       title: title,
       description: description,
