@@ -4,7 +4,7 @@ import 'package:later/domain/models/record_model.dart';
 import 'package:later/domain/remap/record_remapper.dart';
 import 'package:later/domain/repository/record_repository.dart';
 
-@lazySingleton
+@LazySingleton(as: RecordsRepository)
 class RecordRepositoryImpl implements RecordsRepository {
   RecordRepositoryImpl(
     this._recordsDataSource,
