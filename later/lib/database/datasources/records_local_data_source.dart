@@ -15,7 +15,6 @@ class RecordsLocalDataSource extends RecordsDataSource {
     required String url,
     required String title,
     String? description,
-    DateTime? lastEditedAt,
   }) async {
     if (title.isEmpty) {
       throw const FormatException('Title cannot be empty');
@@ -24,7 +23,7 @@ class RecordsLocalDataSource extends RecordsDataSource {
     final record = RecordDbModel(
       url: url,
       createdAt: DateTime.now(),
-      lastEditedAt: lastEditedAt,
+      lastEditedAt: null,
       title: title,
       description: description,
     );
