@@ -10,7 +10,7 @@
 
 ### [Sprint 1, Home Screen, Simple Add Record Screen](https://github.com/users/nivisi/projects/3/views/1)
 
-🗓 10.01.23 — 17.01.23
+🗓 18.01.23 — 25.01.23
 
 ### Goals
 
