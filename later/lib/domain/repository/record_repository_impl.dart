@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:later/database/datasources/records_data_source.dart';
+import 'package:later/database/models/record_model.dart';
 import 'package:later/domain/models/record_model.dart';
 import 'package:later/domain/remap/record_remapper.dart';
 import 'package:later/domain/repository/record_repository.dart';
@@ -55,5 +56,22 @@ class RecordRepositoryImpl implements RecordsRepository {
             },
           ).toList(),
         );
+  }
+
+  @override
+  Future<String> delete(int id) async {
+    return await _recordsDataSource.delete(id);
+  }
+
+  @override
+  Future<RecordModel?> update(RecordDbModel recordDbModel) async {
+    final dbModel = await _recordsDataSource.update(recordDbModel);
+
+    if (dbModel == null) {
+      return null;
+    }
+    final model = _recordRemapper.dataToDomain(dbModel);
+
+    return model;
   }
 }
