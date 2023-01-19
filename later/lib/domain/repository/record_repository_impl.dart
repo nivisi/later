@@ -72,7 +72,7 @@ class RecordRepositoryImpl implements RecordsRepository {
   }
 
   @override
-  Future<String> delete(int id) {
+  Future<void> delete(int id) {
     return _recordsDataSource.delete(id);
   }
 }

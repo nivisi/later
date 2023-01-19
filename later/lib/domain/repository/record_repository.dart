@@ -11,5 +11,5 @@ abstract class RecordsRepository {
   Future<RecordModel?> update(RecordDbModel recordDbModel);
   Stream<List<RecordModel>> watchAll();
   Future<RecordModel?> getById(int id);
-  Future<String> delete(int id);
+  Future<void> delete(int id);
 }

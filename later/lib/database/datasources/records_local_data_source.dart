@@ -76,8 +76,7 @@ class RecordsLocalDataSource extends RecordsDataSource {
   }
 
   @override
-  Future<String> delete(int id) async {
+  Future<void> delete(int id) async {
     final result = await _isar.recordDbModels.delete(id);
-    return 'Resul success:$result';
   }
 }
