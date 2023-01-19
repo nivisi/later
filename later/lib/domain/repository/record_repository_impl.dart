@@ -59,19 +59,20 @@ class RecordRepositoryImpl implements RecordsRepository {
   }
 
   @override
-  Future<String> delete(int id) async {
-    return await _recordsDataSource.delete(id);
-  }
-
-  @override
   Future<RecordModel?> update(RecordDbModel recordDbModel) async {
     final dbModel = await _recordsDataSource.update(recordDbModel);
 
     if (dbModel == null) {
       return null;
     }
+
     final model = _recordRemapper.dataToDomain(dbModel);
 
     return model;
+  }
+
+  @override
+  Future<String> delete(int id) {
+    return _recordsDataSource.delete(id);
   }
 }
