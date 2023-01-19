@@ -39,21 +39,21 @@ class RecordsLocalDataSource extends RecordsDataSource {
   Future<RecordDbModel> update(RecordDbModel recordDbModel) async {
     final dbModel = await _isar.recordDbModels.get(recordDbModel.id);
 
-    if (dbModel != null) {
-      dbModel
-        ..title = recordDbModel.title == dbModel.title
-            ? dbModel.title
-            : recordDbModel.title
-        ..url =
-            recordDbModel.url == dbModel.url ? dbModel.url : recordDbModel.url
-        ..description = recordDbModel.description == dbModel.description
-            ? dbModel.description
-            : recordDbModel.description
-        ..lastEditedAt = DateTime.now();
-    } else {
-      throw const FormatException(
-          'We can not update file that we don\'t have at Database.');
+    if (dbModel == null) {
+      throw Exception(
+        'No entity with such ID found',
+      );
     }
+
+    dbModel
+      ..title = recordDbModel.title == dbModel.title
+          ? dbModel.title
+          : recordDbModel.title
+      ..url = recordDbModel.url == dbModel.url ? dbModel.url : recordDbModel.url
+      ..description = recordDbModel.description == dbModel.description
+          ? dbModel.description
+          : recordDbModel.description
+      ..lastEditedAt = DateTime.now();
 
     await _isar.writeTxn(() => _isar.recordDbModels.put(dbModel));
 
@@ -61,11 +61,11 @@ class RecordsLocalDataSource extends RecordsDataSource {
   }
 
   @override
-  Future<RecordDbModel?> getById(int id) {
-    final model = _isar.txn(() => _isar.recordDbModels.get(id));
+  Future<RecordDbModel?> getById(int id) async {
+    final model = await _isar.txn(() => _isar.recordDbModels.get(id));
 
     if (model == null) {
-      throw const FormatException('Object with that id don\'t exist.');
+      return null;
     }
     return model;
   }
