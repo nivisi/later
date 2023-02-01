@@ -10,11 +10,14 @@ class HomePageCubit extends Cubit<HomeState> {
 
   final WatchAllRecordsUseCase useCase;
 
-  Future<void> fetchRecords() async {
+  void fetchRecords() {
     emit(HomeLoading());
-
     var streamRecords = useCase.call();
 
-    emit(HomeLoaded(streamRecords));
+    if (streamRecords != null) {
+      emit(HomeLoaded(streamRecords));
+    } else {
+      emit(HomeError());
+    }
   }
 }
