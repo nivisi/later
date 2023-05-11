@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:later/database/repository/record_repository.dart';
+import 'package:later/domain/repository/record_repository_impl.dart';
 import 'package:later/di/later_di.dart';
 
 class RecordPage extends StatefulWidget {
